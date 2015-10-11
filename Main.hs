@@ -8,7 +8,7 @@ module Main
     main
     ) where
 
-      import Web.Scotty(scotty,get,file)
+      import Web.Scotty(scotty,get,file,setHeader)
       import Network.Info(getNetworkInterfaces,NetworkInterface(..))
       import System.Directory(getAppUserDataDirectory,createDirectory,doesDirectoryExist)
       import Control.Monad(unless)
@@ -32,7 +32,9 @@ module Main
         putStrLn "GetIp server begin"
         _ <- forkIO write
         scotty 7999 $
-          get  "/" $ file $ dataDir ++ "/ipv4"
+          get  "/" $ do
+            setHeader "Content-Type" "application/json; charset=utf-8"
+            file $ dataDir ++ "/ipv4"
 
       write :: IO ()
       write = do
@@ -49,4 +51,4 @@ module Main
       writeF :: String -> String -> IO()
       writeF fn text = do
         time <- getCurrentTime
-        writeFile fn $ text ++ "\n" ++ show time
+        writeFile fn $ "{\"ipv4\":\"" ++ text ++ "\",\"refresh\":\"" ++ show time ++ "\"}"
