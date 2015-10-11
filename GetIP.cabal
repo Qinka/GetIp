@@ -22,4 +22,4 @@ executable	getip.host
                   , directory
                   , time
 
-  ghc-options: -Wall
+  ghc-options: -Wall -threaded
