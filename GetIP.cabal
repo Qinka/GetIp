@@ -1,0 +1,18 @@
+-- GetIP : Get SSSTA's host's ip
+name: GetIP
+version: 0.1.0.0
+synopsis: A tools get localhost ip
+description: To get ip
+license: BSD3
+author: Qinka <qinka@live.com>
+maintainer: qinka@live.com
+category: Web
+build-type: Simple
+cabal-version: >=1.12
+
+executable	getip.host
+  main-is: Main.hs
+  default-language: Haskell2010
+  build-depends:
+
+ghc-options: -Wall -O2
