@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 dist
 cabal-dev
 *.o
@@ -29,3 +30,21 @@ config.sspt.qinka.hs
 *.synctex.gz
 *.toc
 .DS_Store
+=======
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+.virtualenv
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+*.prof
+*.aux
+*.hp
+>>>>>>> 6597de475b667c295edab0159ed5f5a0aa52888c
