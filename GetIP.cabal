@@ -21,5 +21,6 @@ executable	getip.host
                   , network-info
                   , directory
                   , time
+                  , transformers
 
   ghc-options: -Wall -threaded
