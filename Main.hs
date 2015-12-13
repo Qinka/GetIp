@@ -10,8 +10,6 @@ module Main
 
       import Web.Scotty(scotty,get,setHeader,text)
       import Network.Info(getNetworkInterfaces,NetworkInterface(..))
-      import System.Directory(getAppUserDataDirectory,createDirectory,doesDirectoryExist)
-      import Control.Monad(unless)
       import Control.Monad.IO.Class(liftIO)
       import Data.String(fromString)
 
@@ -27,8 +25,6 @@ module Main
 
       main :: IO ()
       main = do
-        dataDir <- getAppUserDataDirectory "getip"
-        doesDirectoryExist dataDir >>= (\x -> unless x $ createDirectory dataDir)
         putStrLn "GetIp server begin"
         scotty 7999 $
           get  "/" $ do
@@ -38,7 +34,7 @@ module Main
             case rt of
               Nothing -> do
                 liftIO $ putStrLn "CANNOT GET IPV$4"
-                text $"{\"status\":\"failed\",\"reason\":\"CANNOT GET IPV4\"}"
+                text "{\"status\":\"failed\",\"reason\":\"CANNOT GET IPV4\"}" 
               Just x -> do
                 liftIO $ putStrLn x
                 text $ fromString $ "{\"status\":\"success\",\"ipv4\":\""++x++"\"}"
