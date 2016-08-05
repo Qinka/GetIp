@@ -1,6 +1,6 @@
 -- GetIP : Get SSSTA's host's ip
 name: GetIP
-version: 0.1.0.0
+version: 0.1.1.6
 synopsis: A tools get localhost ip
 description: To get ip
 license: BSD3
@@ -18,5 +18,7 @@ executable	getip.host
                   , text
                   , network-info
                   , transformers
+                  , wincon
+                  , silently
 
   ghc-options: -Wall -threaded
